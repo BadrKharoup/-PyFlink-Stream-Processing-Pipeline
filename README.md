@@ -1,5 +1,6 @@
 # PyFlink Stream Processing Pipeline for Kafka to Postgres with Exactly-Once Semantics
 This project implements a real-time data processing pipeline using PyFlink that reads messages from a Kafka topic, performs basic processing, and inserts them into a PostgreSQL database, ensuring exactly-once semantics for data integrity.
+
 ![Stream Processing](https://github.com/BadrKharoup/-PyFlink-Stream-Processing-Pipeline/assets/86493931/d2c5d16f-b4ea-40e5-8e09-e338aa5007e4)
 
 ## Key Features:
