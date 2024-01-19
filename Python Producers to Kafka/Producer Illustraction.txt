@@ -1,0 +1,34 @@
+This Python script is a Kafka producer that generates and sends sample event messages to a Kafka topic. Let me break down the key components of the script:
+
+1- Kafka Configuration:
+The script sets up the Kafka broker address (bootstrap_servers) to 'broker:29092' and the topic (topic) to 'events'.
+The conf dictionary holds the configuration for the Kafka producer, specifying the bootstrap servers and a client ID.
+
+2- Camera IDs:
+The script defines a list of camera IDs (camera_ids) that can be assigned to events.
+
+3-Producer Initialization:
+An instance of the Kafka producer is created using the Producer class from the confluent_kafka library, with the specified configuration.
+
+4- Event Generation:
+The generate_event function creates a sample event message in JSON format. The event includes:
+event_id: A unique identifier based on the current timestamp in microseconds.
+timestamp: The current UTC time in "YYYY-MM-DD HH:MM:SS" format.
+camera_id: A randomly selected camera ID from the list.
+
+5- Message Production:
+The produce_messages function continuously generates and sends event messages to the Kafka topic for a specified duration (duration_minutes), which defaults to 3 minutes.
+Inside the loop, it generates an event message, sends it to the Kafka topic using the producer.produce method, and then polls for delivery reports using producer.poll(0). Some random delay is introduced between message production to simulate real-world scenarios.
+After the specified duration, the producer.flush() method is called to ensure that any outstanding messages are delivered before the script exits.
+
+6- Exception Handling:
+The script includes exception handling to catch and print any errors that might occur during message production.
+
+7-Script Execution:
+The if __name__ == '__main__': block ensures that the produce_messages() function is called when the script is executed.
+
+In summary, this script simulates a scenario where events from different cameras are generated and sent to a Kafka topic. The actual event content is minimal and consists of an event ID, timestamp, and camera ID. This script could be used for testing and experimenting with Kafka event streams.
+
+
+
+
